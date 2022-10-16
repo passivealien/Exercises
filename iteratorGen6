@@ -1,0 +1,7 @@
+function *filter( iterable, filterFunction ) {
+    for( let element of iterable ) {
+    if ( filterFunction( element ) ) yield element;
+    }
+    }
+    let evenFibonacci = filter( fibonacci(), x => x%2 === 0 );
+    evenFibonacci.next()
