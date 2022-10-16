@@ -1,0 +1,81 @@
+// let parse = function( response ) {
+//     let element = document.querySelector( '.js-names' );
+//     element.innerHTML = JSON.parse( response ) .map( element => element.name ) .join(',');
+// }
+// let errorHandler = function() {
+//     console.log( 'error' );
+// }
+    
+// new Promise( function( resolve, reject ) {
+//     let request = new XMLHttpRequest();
+//     request.onreadystatechange = function() {
+//             if ( this.status === 200 && this.readyState === 4 ) {
+//             resolve( this.response );
+//         }
+//     }
+//     request.open( 'GET', 'http://jsonplaceholder.typicode.com/users' );
+//     request.send();
+// } ).then( parse ).catch( errorHandler );
+
+
+// new Promise( function( resolve, reject ) {
+//     let request = new XMLHttpRequest();
+//     request.onreadystatechange = function() {
+//         if ( this.status === 200 && this.readyState === 4 ) {
+//             resolve( this.response );
+//         }
+//     }
+//     request.onerror = function() {
+//         reject( new Error( this.statusText ) );
+//     }
+//     request.open( 'GET', 'https://jsonplaceholder.typicode.com/users' );
+//     request.send();
+// } ).then( parse ).catch( errorHandler );
+
+import React, { Component } from 'react';
+
+function UserNames(props){
+    return <script src = {props.url}></script>
+}
+
+export default UserNames
+//=======================APP.JS=====================================
+
+
+import React, { Component } from 'react';
+import Clients from './Promises/Exercise1'
+
+class App extends Component {
+  constructor(props){
+    super(props)
+      this.state = {
+        userNames : []
+      }
+  }
+
+  componentDidMount(){
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({userNames : data.name})
+    })
+  }
+
+  render(){
+  const clientsName = this.state.userNames.map((url) => {
+      return <Clients url={url}/>
+    }
+  )
+
+    return (
+      <div>
+        <h1>NAMES</h1>
+        {clientsName}
+      </div>
+    )
+  }
+}
+
+export default App;
+
+
