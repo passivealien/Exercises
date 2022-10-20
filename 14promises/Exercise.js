@@ -65,48 +65,76 @@
 
 //================================================================
 
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-export default class Home extends Component {
-    constructor(){
-    super();
-        this.state = {
-            list : [],
-            error : null
-        }
-        }
-        buildList = (data) => {
-        console.log(data);
-        this.setState({list : data})
-        }
-        componentDidMount(){
-        let url = "https://jsonplaceholder.typicode.com/users";
-        fetch(url)
-        .then(response => response.json())
-        .then(this.buildList)
-        .catch()
-        }
-        render(){
-        return(
-            <div>
+// export default class Home extends Component {
+//     constructor(){
+//     super();
+//         this.state = {
+//             list : [],
+//             error : null
+//         }
+//         }
+//         buildList = (data) => {
+//         console.log(data);
+//         this.setState({list : data})
+//         }
+//         componentDidMount(){
+//         let url = "https://jsonplaceholder.typicode.com/users";
+//         fetch(url)
+//         .then(response => response.json())
+//         .then(this.buildList)
+//         .catch()
+//         }
+//         render(){
+//         return(
+//             <div>
             
-            <ul>
-                {
-                this.state.list.length === 0 &&
-                <li>Sorry no data available</li>
-                }
-                {this.state.list.length > 0 &&
-                this.state.list.map( (item) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <li>{item.name}</li>
-                ))
-                }
-            </ul>
-                {
-                this.state.error &&
-                    <h3>{this.state.error}</h3>
-                }
-            </div>
-        )
-    }
+//             <ul>
+//                 {
+//                 this.state.list.length === 0 &&
+//                 <li>Sorry no data available</li>
+//                 }
+//                 {this.state.list.length > 0 &&
+//                 this.state.list.map( (item) => (
+//                     // eslint-disable-next-line react/jsx-key
+//                     <li>{item.name}</li>
+//                 ))
+//                 }
+//             </ul>
+//                 {
+//                 this.state.error &&
+//                     <h3>{this.state.error}</h3>
+//                 }
+//             </div>
+//         )
+//     }
+// }
+
+
+
+//======================================================================
+
+let parse = function( response ) {
+    let element = document.querySelector( '.js-names' );
+    element.innerHTML = JSON.parse( response ).map( element => element.name ).join(',');
 }
+    
+let errorHandler = function() {
+    console.log( 'error' );
+}
+    
+new Promise( function( resolve, reject ) {
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if ( this.status === 200 && this.readyState === 4 ) {
+            resolve( this.response );
+        }
+    }
+    request.onerror = function() { reject( new Error( this.statusText ) );
+    }
+    request.open('GET','http://jsonplaceholder.typicode.com/users');
+    request.send();
+} ).then( parse ).catch( errorHandler );
+
+    
