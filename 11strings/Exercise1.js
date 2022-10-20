@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+//import React from 'react';
 // let str = '\u{1f600}\u{00fa}é';
 // for (const ch of str) {
 //     console.log(ch);
@@ -58,7 +58,10 @@
 // Price: 5999.90€
 // </div>
 //==================================
-let display = () => {
+
+import React from 'react'
+
+const Display = () => {
     let departures = [
         {
             id : 'KL 1255',
@@ -105,7 +108,8 @@ let display = () => {
         status : 'Status'
         }
     //=========================================================
-    let tableHeader = `
+    let tableHeader = 
+        ` 
         <tr>
         <th>${ headers.id }</th>
         <th>${ headers.destination }</th>
@@ -113,8 +117,7 @@ let display = () => {
         <th>${ headers.expectedDepartureTime }</th>
         <th>${ headers.gate }</th>
         <th>${ headers.status }</th>
-        </tr>
-    `;
+        </tr> `;
         let departure = departures[0];
 
     let tableRow = `
@@ -153,8 +156,7 @@ let display = () => {
         
     let table = `<table>${ tableHeader }${ tableRows }</table>`;
             
-
-    `<table>
+    const tableRowData = `<table>
         <tr>
             <th>${ headers.id }</th>
             <th>${ headers.destination }</th>
@@ -174,7 +176,93 @@ let display = () => {
         </tr>
         ` ).join( '' ) }
     </table>`;
-
-    console.log(table)
+    return (
+    <div>
+            {tableRowData   }
+    </div>)
 }
-export default display
+export default Display
+
+// let firstName = "Hello"
+// let lastName = "World"
+
+// console.log(`Hello ${firstName} ${lastName}!`)
+
+// import React, { Component } from 'react';
+// import './table.css'
+// const data = [
+//         {
+//             id : 'KL 1255',
+//             destination : 'Amsterdam',
+//             departureTime : '21:55',
+//             gate : 'A13',
+//         },
+//         {
+//             id : 'OK 001',
+//             destination : 'Prague',
+//             departureTime : '20:40',
+//             gate : 'A13',
+//             status : 'Check-in'
+//         },
+//         {
+//             id : '4U 2011',
+//             destination : 'Stuttgart',
+//             departureTime : '20:35',
+//             gate : 'A11',
+//             status : 'Check-in'
+//         },
+//         {
+//             id : 'LX 911',
+//             destination : 'Zurich',
+//             departureTime : '20:15',
+//             expectedDepartureTime : '21:15',
+//             status : 'check-in'
+//         },
+//         {
+//             id : 'OS 133',
+//             destination : 'Vienna',
+//             departureTime : '19:25',
+//             gate : 'A06',
+//             status : 'Departed'
+//         }
+//     ]
+//     let headers = {
+//             id : 'Id',
+//             destination : 'Destination',
+//             departureTime : 'DepartureTime',
+//             expectedDepartureTime : 'Expected Departure Time',
+//             gate : 'Gate',
+//             status : 'Status'
+//             }
+    
+// class table extends Component{
+//   render(){
+//     return ( 
+//         <table>
+//         <tr>
+//           <th>Id</th>
+//           <th>Destination</th>
+//           <th>DepartureTime</th>
+//           <th>Expected Departure Time</th>
+//           <th>Gate</th>
+//           <th>Status</th>
+//         </tr>
+//         {data.map((val, key) => {
+//           return (
+//             <tr key={key}>
+//               <td>`${val.id} %`</td>
+//               <td>{val.destination}</td>
+//               <td>{val.departureTime}</td>
+//               <td>{val.expectedDepartureTime}</td>
+//               <td>{val.gate}</td>
+//               <td>{val.status}</td>
+//             </tr>
+//           )
+//         })}
+//       </table>
+//     )
+//   }
+// }
+
+// export default table;
+
