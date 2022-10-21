@@ -34,6 +34,7 @@
 //     console.log(reason);
 //     } );
 //============================================
+
 // let parse = function( response ) {
 //     let element = document.querySelector( '.js-names' );
 //     element.innerHTML = JSON.parse( response ).map( element => element.name ).join(',');
@@ -63,10 +64,71 @@
 //     console.log(message + " has failed")
 // })
 
-//================================================================
+//=======================================================
 
+// let enableFields = function() {
+//     document.querySelector( '.js-textfield' ).removeAttribute( 'disabled' );
+//     document.querySelector( '.js-button' ).removeAttribute( 'disabled' );
+// }
+
+// let disableFields = function() {
+//     document.querySelector( '.js-textfield' ).setAttribute( 'disabled', true );
+//     document.querySelector( '.js-button' ).setAttribute( 'disabled', true );
+// }
+
+// let parse = function( response ) {
+//     let element = document.querySelector( '.js-names' );
+//     element.innerHTML =
+//     JSON.parse( response ).map( element => element.name ).join(',');
+//     enableFields();
+// }
+
+// let errorHandler = function() {
+//     console.log( 'error' );
+//     enableFields();
+// }
+// new Promise( function( resolve, reject ) {
+//     disableFields();
+//     let request = new XMLHttpRequest();
+//     request.onreadystatechange = function() {
+//         if ( this.status === 200 && this.readyState === 4 ) {
+//             resolve( this.response );
+//         }
+//     }
+//     request.onerror = function() {
+//         reject( new Error( this.statusText ) );
+//     }
+//     request.open( 'GET', 'https://jsonplaceholder.typicode.com/users');
+//     request.send(); 
+// } ).then( parse ).catch( errorHandler );
+
+// document.body.innerHTML = `
+// <input type="text" class="js-textfield" />
+// <button class="js-button">
+// Enable the Textfield
+// </button>` +
+// document.body.innerHTML;
+//========================================================
+// import React from 'react';
+
+// let p = new Promise((resolve, reject) => {
+//     let a = 1 + 1
+//     if (a == 2){
+//         resolve('Success')
+//     }
+//     else {
+//         reject('Failed')
+//     }
+// })
+
+//     p.then((message) => {
+//         console.log('This is in the then ' + message)
+//     }).catch((message) => {
+//         console.log('This is in the catch ' + message)
+//     })
+
+//========================================================
 // import React, { Component } from 'react';
-
 // export default class Home extends Component {
 //     constructor(){
 //     super();
@@ -74,67 +136,55 @@
 //             list : [],
 //             error : null
 //         }
-//         }
-//         buildList = (data) => {
-//         console.log(data);
+//     }
+//     buildList = (data) => {
 //         this.setState({list : data})
-//         }
-//         componentDidMount(){
+//     }
+
+//     componentDidMount(){
 //         let url = "https://jsonplaceholder.typicode.com/users";
 //         fetch(url)
 //         .then(response => response.json())
 //         .then(this.buildList)
 //         .catch()
+//     }
+    
+    
+    
+
+//     render(){
+// return(
+// <div>
+//     <ul>
+//         {
+//             this.state.list.length === 0 &&
+//             <li>Sorry no data available</li>
 //         }
-//         render(){
-//         return(
-//             <div>
-            
-//             <ul>
-//                 {
-//                 this.state.list.length === 0 &&
-//                 <li>Sorry no data available</li>
-//                 }
-//                 {this.state.list.length > 0 &&
-//                 this.state.list.map( (item) => (
-//                     // eslint-disable-next-line react/jsx-key
-//                     <li>{item.name}</li>
-//                 ))
-//                 }
-//             </ul>
-//                 {
-//                 this.state.error &&
-//                     <h3>{this.state.error}</h3>
-//                 }
-//             </div>
+//         {
+//             this.state.list.length > 0 &&
+//             this.state.list.map( (item) => (
+//                 <li key={item.id} id={item.id}>{item.name}</li>
+//             ))
+//         }
+//     </ul>
+//     {
+//         this.state.error &&
+//         <h3>{this.state.error}</h3>
+//     }
+
+
+//     <input type="text"/>
+//     <button >
+//     Enable the Textfield
+//     </button>
+//     </div>
 //         )
 //     }
 // }
 
+//=============================================
+fetch("https://jsonplaceholder.typicode.com/users")
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err))
 
-
-//======================================================================
-
-let parse = function( response ) {
-    let element = document.querySelector( '.js-names' );
-    element.innerHTML = JSON.parse( response ).map( element => element.name ).join(',');
-}
-    
-let errorHandler = function() {
-    console.log( 'error' );
-}
-    
-new Promise( function( resolve, reject ) {
-    let request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if ( this.status === 200 && this.readyState === 4 ) {
-            resolve( this.response );
-        }
-    }
-    request.onerror = function() { reject( new Error( this.statusText ) );
-    }
-    request.open('GET','http://jsonplaceholder.typicode.com/users');
-    request.send();
-} ).then( parse ).catch( errorHandler );
-
-    
