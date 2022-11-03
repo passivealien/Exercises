@@ -1,6 +1,4 @@
-let display =() =>
-{
-        let basketProto = {
+let basketProto = {
         value: 0,
         addToBasket( itemValue ) {
         this.value += itemValue;
@@ -20,5 +18,3 @@ let display =() =>
     basketProto.clearBasket()
     basketProto.addToBasket("someone")
     basketProto.pay()
-}
-export default display
