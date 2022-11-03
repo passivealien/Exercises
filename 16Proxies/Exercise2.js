@@ -1,6 +1,4 @@
-let display = () =>
-{    
-    let fibonacci = n =>
+let fibonacci = n =>
     n <= 1 ? n :
     fibonacci( n - 1 ) + fibonacci( n - 2 );
     let originalFibonacci = fibonacci;
@@ -27,6 +25,3 @@ let display = () =>
     console.log( 'fibCount', fibCount );
     console.log( 'fib2Count', fib2Count );
     fibonacci = originalFibonacci;
-}
-
-export default display
