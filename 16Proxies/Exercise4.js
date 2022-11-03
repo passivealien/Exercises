@@ -1,6 +1,4 @@
-let display = () =>
-{
-    let course = {
+let course = {
     name: 'ES6 in Practice',
     _price: 99,
     currency: '€',
@@ -31,6 +29,3 @@ let display = () =>
 
     console.log(discountedCourse.price)
     console.log(discountedCourse.price)
-}
-
-export default display
