@@ -1,16 +1,12 @@
-let display = () =>
-{
-    function fib (n) {
-        let acc1 = 5
-        let acc2 = 0
-        let sum = 1
-        if (n <= 1) return n
-        for (let i = 1; i <= n; ++i) {
-        [acc1, acc2] = [acc1 + acc2, acc1]
-        }
-        sum = acc1 + acc2
-        console.log(sum)
+function fib (n) {
+    let acc1 = 5
+    let acc2 = 0
+    let sum = 1
+    if (n <= 1) return n
+    for (let i = 1; i <= n; ++i) {
+    [acc1, acc2] = [acc1 + acc2, acc1]
     }
-    fib(4)
+    sum = acc1 + acc2
+    console.log(sum)
 }
-export default display
+fib(4)
