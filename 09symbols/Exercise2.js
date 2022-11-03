@@ -1,25 +1,17 @@
-let display = () =>
-{
-    class Something {
-        #property;
-    
-        constructor(){
-        this.#property = "test";
-        }
-    
-        #privateMethod() {
-        return 'hello world';
-        }
-    
-        getPrivateMessage() {
-            return this.#property;
-        }
+class Something {
+    #property;
+    constructor(){
+    this.#property = "test";
     }
-    
-    const instance = new Something();
-    console.log(instance.property); //=> undefined
-    console.log(instance.privateMethod); //=> undefined
-    console.log(instance.getPrivateMessage()); //=> test
-    //console.log(instance.#property); //=> Syntax error}
+    #privateMethod() {
+    return 'hello world';
+    }
+    getPrivateMessage() {
+        return this.#property;
+    }
 }
-export default display
+const instance = new Something();
+console.log(instance.property); //=> undefined
+console.log(instance.privateMethod); //=> undefined
+console.log(instance.getPrivateMessage()); //=> test
+//console.log(instance.#property); //=> Syntax error}
