@@ -1,5 +1,4 @@
-let display = () => {    
-    class Person {
+class Person {
         constructor( name ) {
             this.name = name;
         }
@@ -22,5 +21,3 @@ let display = () => {
     console.log("newContext.first returns the changed first word from person that passed through Reflect.set()")
     console.log("newContext.last returns the changed last word from person that passed through Reflect.set()")
     console.log("newContext.name returns the new values from Reflect.set()")
-}
-export default display
