@@ -15,4 +15,4 @@ let errorDemo = function *() {
     console.log( [...errorDemo()] );
     for ( let element of errorDemo() ) {
         console.log( element );
-    }
+   }
