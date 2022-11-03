@@ -1,5 +1,4 @@
-let display = () => {
-    function fib( n=7 ) {
+function fib( n=7 ) {
         let fibCurrent = 1;
         let fibLast = 0;
         if ( n < 0 ) return NaN;
@@ -9,7 +8,4 @@ let display = () => {
         }
         return console.log(fibCurrent);
         }
-    fib()
-}
-export default display
-//return fib();
+fib()
