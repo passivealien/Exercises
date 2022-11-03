@@ -1,22 +1,19 @@
-let display = () => {
-    class Movie {
-        constructor( title, movieLength ) {
-            this.title = title;
-            this.movieLength = movieLength;
-        }
-        toString() {
-            return `${this.title} (${this.movieLength} minutes)`;
-        }
+class Movie {
+    constructor( title, movieLength ) {
+        this.title = title;
+        this.movieLength = movieLength;
     }
-    console.log(
-        Reflect.apply(
-            Movie.prototype.toString,
-            {
-                title: 'Rush',
-                movieLength: 123
-            },
-            []
-        )
-    )
+    toString() {
+        return `${this.title} (${this.movieLength} minutes)`;
+    }
 }
-export default display
+console.log(
+    Reflect.apply(
+        Movie.prototype.toString,
+        {
+            title: 'Rush',
+            movieLength: 123
+        },
+        []
+    )
+)
